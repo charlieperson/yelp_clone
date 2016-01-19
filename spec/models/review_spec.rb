@@ -9,4 +9,9 @@ describe Review, type: :model do
     chucks.destroy
     expect(Review.all).to eq([])
   end
+
+  it "cannot be rated over 5" do
+    review = Review.create(rating: 1000)
+    expect(review).to have(1).error_on(:rating)
+  end
 end

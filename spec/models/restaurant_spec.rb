@@ -9,4 +9,12 @@ describe Restaurant, type: :model do
     expect(restaurant).not_to be_valid
   end
 
+  it 'is expected to have a unique name' do
+    restaurant1 = Restaurant.create(name: "Chucks hot balls")
+    expect(restaurant1).not_to have(1).error_on(:name)
+    restaurant2 = Restaurant.create(name: "Chucks hot balls")
+    expect(restaurant2).to have(1).error_on(:name)
+    expect(restaurant2).not_to be_valid
+  end
+
 end
