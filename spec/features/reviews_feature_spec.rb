@@ -14,4 +14,15 @@ feature 'rails-helper' do
     expect(page).to have_content('so so')
   end
 
-end
+  scenario 'delete reviews when restaurant is deleted' do
+    visit '/restaurants'
+    click_link 'Review KFC'
+    fill_in "Thoughts", with: "so so"
+    select '3', from: 'Rating'
+    click_button 'Leave Review'
+    click_link 'Delete KFC'
+
+    expect(Review.first).not_to have_content('so so')
+  end
+
+end 
