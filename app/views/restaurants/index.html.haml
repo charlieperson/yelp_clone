@@ -1,3 +1,4 @@
+%h1 restaurants
 -if @restaurants.any?
   -@restaurants.each do |r|
     %h2= link_to r.name, restaurant_path(r)
