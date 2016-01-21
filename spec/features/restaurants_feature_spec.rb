@@ -85,5 +85,14 @@ feature 'restaurants' do
     end
   end
 
+  context 'users that are not logged in cannot create reviews' do
+    before{Restaurant.create name: 'Pizza Town'}
+
+    it 'does not allow non-logged in users to review restaurants' do
+      visit '/restaurants'
+      click_link ('Pizza Town')
+      expect(page).to_not have_content("Review Pizza Town")
+    end
+  end
 
 end

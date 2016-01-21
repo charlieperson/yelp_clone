@@ -1,8 +1,9 @@
 %h1
   = @restaurant.name
   = @restaurant.description
-%h3
-  = link_to "Review #{@restaurant.name}", new_restaurant_review_path(@restaurant)
+-if user_signed_in?
+  %h3
+    = link_to "Review #{@restaurant.name}", new_restaurant_review_path(@restaurant)
 
 - if @restaurant.reviews.any?
   %ul
