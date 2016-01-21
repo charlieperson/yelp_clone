@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Review, type: :model do
   it { is_expected.to belong_to :restaurant }
+  it { is_expected.to belong_to :user }
 
   it "deletes reviews when a restaurant is deleted" do
     chucks = Restaurant.create(name: "Chuck's BBQ")
