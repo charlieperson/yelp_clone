@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Restaurant, type: :model do
   it { is_expected.to have_many :reviews }
+  it { is_expected.to belong_to :user }
 
   it 'is expected to have a name of over two letters' do
     restaurant = Restaurant.create(name: "kf")
