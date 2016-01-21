@@ -1,5 +1,13 @@
 require 'rails_helper'
 
+def sign_up
+  visit '/'
+  click_link 'Sign up'
+  fill_in 'Email', with: 'charlie.person@hyperisland.se'
+  fill_in 'Password', with: '2001CHUCKDOGG'
+  fill_in 'Password confirmation', with: '2001CHUCKDOGG'
+  click_button 'Sign up'
+end
 # Specs in this file have access to a helper object that includes
 # the RestaurantsHelper. For example:
 #

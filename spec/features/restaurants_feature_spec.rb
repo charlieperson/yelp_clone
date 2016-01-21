@@ -33,6 +33,7 @@ feature 'restaurants' do
     end
 
     scenario 'prompts user to fill out a form, then displays the new restaurant' do
+      sign_up
       fill_in 'Name', with: 'KFC'
       click_button 'Create Restaurant'
       expect(page).to have_content 'KFC'
@@ -41,6 +42,7 @@ feature 'restaurants' do
 
     context 'an invalid restaurant' do
       it 'does not let you submit a name that is too short' do
+        sign_up
         fill_in 'Name', with: 'kf'
         click_button 'Create Restaurant'
         expect(page).not_to have_css 'h2', text: 'kf'
@@ -64,6 +66,7 @@ feature 'restaurants' do
     before{ Restaurant.create name: 'KFC' }
 
     scenario 'let a user edit a restuarant' do
+      sign_up
       visit '/restaurants'
       click_link 'Edit KFC'
       fill_in 'Name', with: 'Kentucky Fried Chicken'
@@ -77,6 +80,7 @@ feature 'restaurants' do
     before{Restaurant.create name: 'Pizza Town'}
 
     scenario 'let a user delete a restaurant' do
+      sign_up
       visit '/restaurants'
       click_link 'Delete Pizza Town'
       expect(page).not_to have_content('Pizza Town')

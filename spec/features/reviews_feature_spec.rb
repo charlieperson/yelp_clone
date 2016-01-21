@@ -5,6 +5,7 @@ feature 'reviews' do
   before { Restaurant.create name: 'Charlies Chuck Wagon'}
 
   before do
+    sign_up
     visit '/restaurants'
     click_link "Charlies Chuck Wagon"
     click_link "Review Charlies Chuck Wagon"
