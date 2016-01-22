@@ -25,9 +25,19 @@ describe Restaurant, type: :model do
     end
     context '1 review' do
       it "returns avg rating" do
-        restaurant = Restaurant.create(name: 'The Oak')
+        restaurant = Restaurant.create(name: 'Honest Burguer')
         restaurant.reviews.create(rating: 4)
         expect(restaurant.average_rating).to eq 4
+      end
+    end
+    context 'several reviews' do
+      it "returns avg rating" do
+        user1=User.create(email: 'ss@gmail.com', password: 'holacaracola', password_confirmation: 'holacaracola')
+        user2=User.create(email: 'ds@gmail.com', password: 'caracaracola', password_confirmation: 'caracaracola')
+        restaurant = Restaurant.create(name: 'Yauatcha')
+        restaurant.reviews.create(rating: 1, user_id: user1.id)
+        restaurant.reviews.create(rating: 5, user_id: user2.id)
+        expect(restaurant.average_rating).to eq 3.0
       end
     end
   end
