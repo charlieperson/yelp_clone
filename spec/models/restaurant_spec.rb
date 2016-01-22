@@ -17,5 +17,4 @@ describe Restaurant, type: :model do
     expect(restaurant2).to have(1).error_on(:name)
     expect(restaurant2).not_to be_valid
   end
-
 end
