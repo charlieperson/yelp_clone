@@ -16,6 +16,14 @@ feature 'reviews' do
     expect(page).to have_content('so so')
   end
 
+  scenario 'allows user to see average rating' do
+    review_restaurant('KFC',3)
+    click_link 'Sign out'
+    sign_up(email: 'd@hotmail.com', password: 'longertest', password_confirmation: 'longertest')
+    review_restaurant('KFC',4)
+    expect(page).to have_content('Average rating: 3.5')
+  end
+
   scenario 'delete reviews when restaurant is deleted' do
     visit '/restaurants'
     click_link 'Review KFC'

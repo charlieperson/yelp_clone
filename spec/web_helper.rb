@@ -18,4 +18,10 @@ module SigningUpAndIn
       click_button 'Create Restaurant'
     end
 
+  def review_restaurant(name, rating)
+    click_link "Review #{name}"
+    fill_in 'Thoughts', with: 'so so'
+    select "#{rating}", from: 'Rating'
+    click_button 'Leave Review'
+  end
 end
