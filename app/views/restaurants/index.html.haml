@@ -13,6 +13,7 @@
       - if restaurant.reviews.any?
         %ul
           - restaurant.reviews.each do |review|
+            %p= pluralize review.endorsements.count, 'endorsement'
             %li
               = review.thoughts
               %strong= review.rating
