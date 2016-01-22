@@ -20,8 +20,8 @@ feature 'reviews' do
     review_restaurant('KFC',3)
     click_link 'Sign out'
     sign_up(email: 'd@hotmail.com', password: 'longertest', password_confirmation: 'longertest')
-    review_restaurant('KFC',4)
-    expect(page).to have_content('Average rating: 3.5')
+    review_restaurant('KFC',5)
+    expect(page).to have_content('Average rating: ★★★★☆')
   end
 
   scenario 'delete reviews when restaurant is deleted' do
