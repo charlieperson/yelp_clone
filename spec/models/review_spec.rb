@@ -9,4 +9,10 @@ describe Review, :type => :model do
     expect(review).to have(1).error_on(:rating)
   end
 
+  it 'allows a review to be endorsed' do
+    review = Review.create(rating: 1)
+    review.endorsements.create()
+    expect(review.endorsements.count).to eq 1
+  end
+
 end
